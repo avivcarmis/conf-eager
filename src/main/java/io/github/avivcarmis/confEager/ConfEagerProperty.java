@@ -1,5 +1,8 @@
 package io.github.avivcarmis.confEager;
 
+import io.github.avivcarmis.confEager.exceptions.ConfEagerIllegalPropertyValue;
+import io.github.avivcarmis.confEager.exceptions.ConfEagerReadBeforeWriteException;
+
 /**
  * Created by avivc on 1/22/2017.
  */
@@ -47,13 +50,17 @@ abstract public class ConfEagerProperty<T> {
 
     public T get() {
         if (!_populated) {
-            throw new RuntimeException("confEager property not populated before read");
+            throw new ConfEagerReadBeforeWriteException();
         }
         return _value;
     }
 
     void update(String value) {
-        this._value = map(value);
+        try {
+            this._value = map(value);
+        } catch (Throwable t) {
+            throw new ConfEagerIllegalPropertyValue(t);
+        }
         _populated = true;
     }
 

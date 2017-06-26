@@ -5,6 +5,14 @@ package io.github.avivcarmis.confEager;
  */
 abstract public class ConfEager {
 
+    protected String defaultEnvironment() {
+        return "";
+    }
+
+    protected ConfEagerFieldFilter defaultFieldFilter() {
+        return ConfEagerFieldFilter.NON_STATIC;
+    }
+
     protected static <T> DefaultValue<T> defaultValue(T value) {
         return new DefaultValue<>(value);
     }

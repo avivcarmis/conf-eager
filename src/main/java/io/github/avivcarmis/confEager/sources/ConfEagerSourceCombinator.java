@@ -2,6 +2,7 @@ package io.github.avivcarmis.confEager.sources;
 
 import io.github.avivcarmis.confEager.ConfEagerSource;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -13,6 +14,10 @@ public class ConfEagerSourceCombinator extends ConfEagerSource {
 
     public ConfEagerSourceCombinator(List<ConfEagerSource> sources) {
         _sources = sources;
+    }
+
+    public ConfEagerSourceCombinator(ConfEagerSource... sources) {
+        _sources = Arrays.asList(sources);
     }
 
     @Override

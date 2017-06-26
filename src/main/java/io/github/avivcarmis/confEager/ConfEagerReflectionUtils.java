@@ -1,28 +1,25 @@
 package io.github.avivcarmis.confEager;
 
-import io.github.avivcarmis.trafficante.core.BasicEndpoint;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import java.lang.reflect.Field;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Logger;
 
 class ConfEagerReflectionUtils {
 
     // Constants
 
-    private static final Log LOG = LogFactory.getLog(BasicEndpoint.class);
+    private static final Logger LOGGER = Logger.getLogger(ConfEager.class.getName());
 
     // Static
 
-    static List<ConfEagerProperty> findProperties(ConfEager confEagerObject, ConfEagerFieldFilter filter) {
+    static List<ConfEagerProperty> findProperties(ConfEager confEager) {
         List<ConfEagerProperty> result = new LinkedList<>();
-        Class<?> currentClass = confEagerObject.getClass();
+        Class<?> currentClass = confEager.getClass();
         while (currentClass != null && !currentClass.equals(Object.class)) {
             Field[] currentClassFields = currentClass.getDeclaredFields();
             for (Field field : currentClassFields) {
-                ConfEagerProperty property = validatePropertyField(filter, confEagerObject, field);
+                ConfEagerProperty property = validatePropertyField(confEager, field);
                 if (property != null) {
                     result.add(property);
                 }
@@ -32,21 +29,24 @@ class ConfEagerReflectionUtils {
         return result;
     }
 
-    private static ConfEagerProperty validatePropertyField(ConfEagerFieldFilter filter, ConfEager object, Field field) {
-        if (!filter.test(field) || !ConfEagerProperty.class.isAssignableFrom(field.getType())) {
+    private static ConfEagerProperty validatePropertyField(ConfEager confEager, Field field) {
+        if (confEager.defaultFieldFilter() != null && !confEager.defaultFieldFilter().test(field)) {
+            return null;
+        }
+        if (!ConfEagerProperty.class.isAssignableFrom(field.getType())) {
             return null;
         }
         field.setAccessible(true);
         Object value;
         try {
-            value = field.get(object);
+            value = field.get(confEager);
         } catch (IllegalAccessException e) {
-            LOG.error("could not access property " + field.getName() + " on confEager class " +
-                    object.getClass().getSimpleName(), e);
+            LOGGER.severe("could not access property " + field.getName() + " on confEager class " +
+                    confEager.getClass().getSimpleName() + ": " + e.getMessage());
             return null;
         }
         if (value == null) {
-            LOG.error("property " + field.getName() + " on confEager class " + object.getClass().getSimpleName() +
+            LOGGER.severe("property " + field.getName() + " on confEager class " + confEager.getClass().getSimpleName() +
                     " must not be null to be populated");
             return null;
         }

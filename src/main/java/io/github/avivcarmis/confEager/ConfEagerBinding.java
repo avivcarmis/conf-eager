@@ -7,13 +7,13 @@ import java.util.List;
  */
 class ConfEagerBinding {
 
-    final String _prefix;
+    final ConfEager _confEagerObject;
 
     final List<ConfEagerProperty> _properties;
 
-    ConfEagerBinding(ConfEager confEagerObject, ConfEagerFieldFilter fieldFilter, String prefix) {
-        _prefix = prefix;
-        _properties = ConfEagerReflectionUtils.findProperties(confEagerObject, fieldFilter);
+    ConfEagerBinding(ConfEager confEagerObject) {
+        _confEagerObject = confEagerObject;
+        _properties = ConfEagerReflectionUtils.findProperties(confEagerObject);
     }
 
 }
