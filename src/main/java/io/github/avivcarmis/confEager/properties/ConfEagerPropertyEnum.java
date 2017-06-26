@@ -4,7 +4,8 @@ import io.github.avivcarmis.confEager.ConfEager;
 import io.github.avivcarmis.confEager.ConfEagerProperty;
 
 /**
- * Created by Mamot on 6/25/2017.
+ * Out of the box {@link io.github.avivcarmis.confEager.ConfEagerProperty}
+ * that maps {@link Enum} values.
  */
 public class ConfEagerPropertyEnum<T extends Enum<T>> extends ConfEagerProperty<T> {
 

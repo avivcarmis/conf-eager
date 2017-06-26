@@ -6,7 +6,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by Mamot on 6/25/2017.
+ * Out of the box source to receive other sources,
+ * and chain them one after the other for each property,
+ * until it is found in either of them.
  */
 public class ConfEagerSourceCombinator extends ConfEagerSource {
 

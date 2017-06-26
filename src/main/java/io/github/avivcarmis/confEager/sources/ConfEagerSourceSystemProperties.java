@@ -3,7 +3,7 @@ package io.github.avivcarmis.confEager.sources;
 import io.github.avivcarmis.confEager.ConfEagerSource;
 
 /**
- * Created by Mamot on 6/25/2017.
+ * Out of the box source to map System Properties
  */
 public class ConfEagerSourceSystemProperties extends ConfEagerSource {
 

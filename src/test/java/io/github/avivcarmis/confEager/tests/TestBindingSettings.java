@@ -1,5 +1,8 @@
-package io.github.avivcarmis.confEager;
+package io.github.avivcarmis.confEager.tests;
 
+import io.github.avivcarmis.confEager.ConfEager;
+import io.github.avivcarmis.confEager.ConfEagerFieldFilter;
+import io.github.avivcarmis.confEager.ConfEagerSource;
 import io.github.avivcarmis.confEager.exceptions.ConfEagerPropertiesMissingException;
 import io.github.avivcarmis.confEager.properties.ConfEagerPropertyBoolean;
 import org.junit.Assert;

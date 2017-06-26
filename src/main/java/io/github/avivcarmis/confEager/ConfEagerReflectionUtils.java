@@ -5,6 +5,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Logger;
 
+/**
+ * Reflection utilities to scan and find the property fields
+ */
 class ConfEagerReflectionUtils {
 
     // Constants

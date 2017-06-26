@@ -3,9 +3,6 @@ package io.github.avivcarmis.confEager.properties.utils;
 import io.github.avivcarmis.confEager.ConfEager;
 import io.github.avivcarmis.confEager.ConfEagerProperty;
 
-/**
- * Created by Mamot on 6/25/2017.
- */
 abstract public class ConfEagerPropertyPrimitive<T> extends ConfEagerProperty<T> {
 
     private final ConfEagerValueMapper<T> _mapper;

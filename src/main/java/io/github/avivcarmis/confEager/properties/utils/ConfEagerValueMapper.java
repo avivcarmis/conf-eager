@@ -1,8 +1,5 @@
 package io.github.avivcarmis.confEager.properties.utils;
 
-/**
- * Created by Mamot on 6/25/2017.
- */
 public interface ConfEagerValueMapper<OUTPUT> {
 
     OUTPUT map(String input);

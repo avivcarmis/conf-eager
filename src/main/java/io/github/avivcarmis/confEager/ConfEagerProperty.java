@@ -4,9 +4,16 @@ import io.github.avivcarmis.confEager.exceptions.ConfEagerIllegalPropertyValue;
 import io.github.avivcarmis.confEager.exceptions.ConfEagerReadBeforeWriteException;
 
 /**
- * Created by avivc on 1/22/2017.
+ * Represents a configuration property.
+ * Concrete classes that inherit this class should be used as fields of a
+ * {@link ConfEager} implementation.
+ *
+ * Custom property types may easily be created by inheriting this class and
+ * implementing {@link #map(String)}.
  */
 abstract public class ConfEagerProperty<T> {
+
+    // Fields
 
     private final boolean _required;
 
@@ -15,6 +22,8 @@ abstract public class ConfEagerProperty<T> {
     private boolean _populated;
 
     private T _value;
+
+    // Constructors
 
     public ConfEagerProperty(ConfEager.DefaultValue<T> defaultValue, ConfEager.PropertyName propertyName) {
         if (defaultValue != null) {
@@ -48,12 +57,20 @@ abstract public class ConfEagerProperty<T> {
         this((ConfEager.DefaultValue<T>) null, null);
     }
 
+    // Public
+
+    /**
+     * @return the configuration property value currently in memory
+     * @throws ConfEagerReadBeforeWriteException in case the property hasn't received any value yet
+     */
     public T get() {
         if (!_populated) {
             throw new ConfEagerReadBeforeWriteException();
         }
         return _value;
     }
+
+    // Private
 
     void update(String value) {
         try {
@@ -78,6 +95,10 @@ abstract public class ConfEagerProperty<T> {
         return _required;
     }
 
+    /**
+     * @param value string representation of the value
+     * @return the parsed value to be stored.
+     */
     abstract protected T map(String value);
 
 }

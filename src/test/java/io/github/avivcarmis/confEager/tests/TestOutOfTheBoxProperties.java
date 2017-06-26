@@ -1,5 +1,7 @@
-package io.github.avivcarmis.confEager;
+package io.github.avivcarmis.confEager.tests;
 
+import io.github.avivcarmis.confEager.ConfEager;
+import io.github.avivcarmis.confEager.ConfEagerSource;
 import io.github.avivcarmis.confEager.exceptions.ConfEagerIllegalPropertyValue;
 import io.github.avivcarmis.confEager.properties.*;
 import org.junit.Assert;

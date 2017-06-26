@@ -7,9 +7,6 @@ import java.lang.reflect.Array;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created by Mamot on 6/25/2017.
- */
 abstract public class ConfEagerPropertyPrimitiveArray<T> extends ConfEagerProperty<T[]> {
 
     private final ConfEagerValueMapper<T> _mapper;

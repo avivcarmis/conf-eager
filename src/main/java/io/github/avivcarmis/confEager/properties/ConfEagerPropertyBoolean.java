@@ -5,7 +5,8 @@ import io.github.avivcarmis.confEager.properties.utils.ConfEagerPropertyPrimitiv
 import io.github.avivcarmis.confEager.properties.utils.ConfEagerValueMapper;
 
 /**
- * Created by Mamot on 6/25/2017.
+ * Out of the box {@link io.github.avivcarmis.confEager.ConfEagerProperty}
+ * that maps {@link Boolean} values.
  */
 public class ConfEagerPropertyBoolean extends ConfEagerPropertyPrimitive<Boolean> {
 
