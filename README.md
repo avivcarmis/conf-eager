@@ -21,7 +21,7 @@ To add a dependency on ConfEager Library using Maven, use the following:
 
 To add a dependency on ConfEager Library using Gradle, use the following:
 ```gradle
-compile 'io.github.avivcarmis:java-red:1.0.1'
+compile 'io.github.avivcarmis:conf-eager:1.0.1'
 ```
 
 ## Getting Started
