@@ -1,13 +1,13 @@
 package io.github.avivcarmis.confEager.tests;
 
 import io.github.avivcarmis.confEager.ConfEager;
-import io.github.avivcarmis.confEager.ConfEagerFieldFilter;
 import io.github.avivcarmis.confEager.ConfEagerSource;
 import io.github.avivcarmis.confEager.exceptions.ConfEagerPropertiesMissingException;
 import io.github.avivcarmis.confEager.properties.ConfEagerPropertyBoolean;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,8 +46,8 @@ public class TestBindingSettings {
         private final ConfEagerPropertyBoolean ignored = new ConfEagerPropertyBoolean();
 
         @Override
-        protected ConfEagerFieldFilter defaultFieldFilter() {
-            return field -> false;
+        protected boolean defaultFieldFilter(Field field) {
+            return false;
         }
 
     }

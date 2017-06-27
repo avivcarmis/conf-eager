@@ -1,6 +1,6 @@
 package io.github.avivcarmis.confEager;
 
-import io.github.avivcarmis.confEager.exceptions.ConfEagerIllegalPropertyValue;
+import io.github.avivcarmis.confEager.exceptions.ConfEagerIllegalPropertyValueException;
 import io.github.avivcarmis.confEager.exceptions.ConfEagerReadBeforeWriteException;
 
 /**
@@ -76,7 +76,7 @@ abstract public class ConfEagerProperty<T> {
         try {
             this._value = map(value);
         } catch (Throwable t) {
-            throw new ConfEagerIllegalPropertyValue(t);
+            throw new ConfEagerIllegalPropertyValueException(t);
         }
         _populated = true;
     }

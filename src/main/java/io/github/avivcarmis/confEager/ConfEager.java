@@ -1,5 +1,10 @@
 package io.github.avivcarmis.confEager;
 
+import io.github.avivcarmis.confEager.properties.ConfEagerPropertyBoolean;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+
 /**
  * Represents a configuration class.
  * Each inheritor will declare it's configuration properties as the class fields,
@@ -12,7 +17,7 @@ package io.github.avivcarmis.confEager;
  * method to explicitly declare what value should be used in case no value appears in the source.
  *
  * By default, static fields are ignored. Which fields get ignored are controlled by the
- * {@link #defaultFieldFilter()} method which may be overridden.
+ * {@link #defaultFieldFilter(Field)} method which may be overridden.
  *
  * Additionally, a prefix may be set to all of the property names by overriding
  * {@link #defaultEnvironment()} method. This may be used to discriminate between
@@ -26,8 +31,8 @@ abstract public class ConfEager {
         return "";
     }
 
-    protected ConfEagerFieldFilter defaultFieldFilter() {
-        return ConfEagerFieldFilter.NON_STATIC;
+    protected boolean defaultFieldFilter(Field field) {
+        return !Modifier.isStatic(field.getModifiers());
     }
 
     // Static

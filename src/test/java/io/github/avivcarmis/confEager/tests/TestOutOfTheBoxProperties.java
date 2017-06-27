@@ -2,7 +2,7 @@ package io.github.avivcarmis.confEager.tests;
 
 import io.github.avivcarmis.confEager.ConfEager;
 import io.github.avivcarmis.confEager.ConfEagerSource;
-import io.github.avivcarmis.confEager.exceptions.ConfEagerIllegalPropertyValue;
+import io.github.avivcarmis.confEager.exceptions.ConfEagerIllegalPropertyValueException;
 import io.github.avivcarmis.confEager.properties.*;
 import org.junit.Assert;
 import org.junit.Test;
@@ -15,7 +15,7 @@ public class TestOutOfTheBoxProperties {
         Assert.assertEquals(confEager.booleanProperty.get(), true);
     }
 
-    @Test(expected = ConfEagerIllegalPropertyValue.class)
+    @Test(expected = ConfEagerIllegalPropertyValueException.class)
     public void testBooleanFailure() {
         bind("booleanProperty", "illegal value");
     }
@@ -28,7 +28,7 @@ public class TestOutOfTheBoxProperties {
         Assert.assertEquals(confEager.booleanArrayProperty.get()[1], false);
     }
 
-    @Test(expected = ConfEagerIllegalPropertyValue.class)
+    @Test(expected = ConfEagerIllegalPropertyValueException.class)
     public void testBooleanArrayFailure() {
         bind("booleanArrayProperty", "illegal value");
     }
@@ -39,7 +39,7 @@ public class TestOutOfTheBoxProperties {
         Assert.assertEquals(confEager.doubleProperty.get(), 156, 0);
     }
 
-    @Test(expected = ConfEagerIllegalPropertyValue.class)
+    @Test(expected = ConfEagerIllegalPropertyValueException.class)
     public void testDoubleFailure() {
         bind("doubleProperty", "illegal value");
     }
@@ -52,7 +52,7 @@ public class TestOutOfTheBoxProperties {
         Assert.assertEquals(confEager.doubleArrayProperty.get()[1], 3, 0);
     }
 
-    @Test(expected = ConfEagerIllegalPropertyValue.class)
+    @Test(expected = ConfEagerIllegalPropertyValueException.class)
     public void testDoubleArrayFailure() {
         bind("doubleArrayProperty", "illegal value");
     }
@@ -63,7 +63,7 @@ public class TestOutOfTheBoxProperties {
         Assert.assertEquals(confEager.floatProperty.get(), 156, 0);
     }
 
-    @Test(expected = ConfEagerIllegalPropertyValue.class)
+    @Test(expected = ConfEagerIllegalPropertyValueException.class)
     public void testFloatFailure() {
         bind("floatProperty", "illegal value");
     }
@@ -76,7 +76,7 @@ public class TestOutOfTheBoxProperties {
         Assert.assertEquals(confEager.floatArrayProperty.get()[1], 3, 0);
     }
 
-    @Test(expected = ConfEagerIllegalPropertyValue.class)
+    @Test(expected = ConfEagerIllegalPropertyValueException.class)
     public void testFloatArrayFailure() {
         bind("floatArrayProperty", "illegal value");
     }
@@ -87,7 +87,7 @@ public class TestOutOfTheBoxProperties {
         Assert.assertEquals(confEager.integerProperty.get(), 156, 0);
     }
 
-    @Test(expected = ConfEagerIllegalPropertyValue.class)
+    @Test(expected = ConfEagerIllegalPropertyValueException.class)
     public void testIntegerFailure() {
         bind("integerProperty", "illegal value");
     }
@@ -100,7 +100,7 @@ public class TestOutOfTheBoxProperties {
         Assert.assertEquals(confEager.integerArrayProperty.get()[1], 3, 0);
     }
 
-    @Test(expected = ConfEagerIllegalPropertyValue.class)
+    @Test(expected = ConfEagerIllegalPropertyValueException.class)
     public void testIntegerArrayFailure() {
         bind("integerArrayProperty", "illegal value");
     }
@@ -111,7 +111,7 @@ public class TestOutOfTheBoxProperties {
         Assert.assertEquals(confEager.longProperty.get(), 156, 0);
     }
 
-    @Test(expected = ConfEagerIllegalPropertyValue.class)
+    @Test(expected = ConfEagerIllegalPropertyValueException.class)
     public void testLongFailure() {
         bind("longProperty", "illegal value");
     }
@@ -124,7 +124,7 @@ public class TestOutOfTheBoxProperties {
         Assert.assertEquals(confEager.longArrayProperty.get()[1], 3, 0);
     }
 
-    @Test(expected = ConfEagerIllegalPropertyValue.class)
+    @Test(expected = ConfEagerIllegalPropertyValueException.class)
     public void testLongArrayFailure() {
         bind("longArrayProperty", "illegal value");
     }
@@ -149,7 +149,7 @@ public class TestOutOfTheBoxProperties {
         Assert.assertEquals(confEager.enumProperty.get(), CustomEnum.VALUE1);
     }
 
-    @Test(expected = ConfEagerIllegalPropertyValue.class)
+    @Test(expected = ConfEagerIllegalPropertyValueException.class)
     public void testEnumFailure() {
         bind("enumProperty", CustomEnum.VALUE1.name().toLowerCase());
     }
@@ -160,7 +160,7 @@ public class TestOutOfTheBoxProperties {
         Assert.assertEquals(confEager.enumCIProperty.get(), CustomEnum.VALUE1);
     }
 
-    @Test(expected = ConfEagerIllegalPropertyValue.class)
+    @Test(expected = ConfEagerIllegalPropertyValueException.class)
     public void testEnumCIFailure() {
         bind("enumCIProperty", "illegal value");
     }

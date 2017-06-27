@@ -33,10 +33,7 @@ class ConfEagerReflectionUtils {
     }
 
     private static ConfEagerProperty validatePropertyField(ConfEager confEager, Field field) {
-        if (confEager.defaultFieldFilter() != null && !confEager.defaultFieldFilter().test(field)) {
-            return null;
-        }
-        if (!ConfEagerProperty.class.isAssignableFrom(field.getType())) {
+        if (!confEager.defaultFieldFilter(field) || !ConfEagerProperty.class.isAssignableFrom(field.getType())) {
             return null;
         }
         field.setAccessible(true);
