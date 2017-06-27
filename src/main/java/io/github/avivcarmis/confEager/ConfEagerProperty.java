@@ -98,7 +98,8 @@ abstract public class ConfEagerProperty<T> {
     /**
      * @param value string representation of the value
      * @return the parsed value to be stored.
+     * @throws Exception in a case where the received value is illegal
      */
-    abstract protected T map(String value);
+    abstract protected T map(String value) throws Exception;
 
 }

@@ -1,7 +1,5 @@
 package io.github.avivcarmis.confEager;
 
-import io.github.avivcarmis.confEager.properties.ConfEagerPropertyBoolean;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
